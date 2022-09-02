@@ -68,7 +68,7 @@ module Venice
       @version_external_identifier = attributes['version_external_identifier']
       @is_trial_period = attributes['is_trial_period'].to_s == 'true' if attributes['is_trial_period']
       @is_in_intro_offer_period = attributes['is_in_intro_offer_period'] == 'true' if attributes['is_in_intro_offer_period']
-      @auto_renew_status = attributes['auto_renew_status'].to_s == 'true' if attributes['auto_renew_status']
+      @auto_renew_status = attributes['auto_renew_status'].to_s.in?(['true', '1']) if attributes['auto_renew_status']
 
       # expires_date is in ms since the Epoch, Time.at expects seconds
       if attributes['expires_date_ms']
